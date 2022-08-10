@@ -13,7 +13,19 @@ const existsOrError = (value, msg) => {
 }
 
 const get = async () => {
-    return User.find();
+
+    const users = await User.find(); 
+    const user = users.map(user =>{
+        const obj = {
+            id: user._id,
+            email: user.email,
+            phones: user.phones
+        }
+        return obj;
+    })
+
+
+    return user;
 };
 
 const signup = async (body) => {
@@ -85,7 +97,7 @@ const signin = async (body) => {
 
     await newToken.save();
 
-    return newToken;
+    return
 };
 
 module.exports = {

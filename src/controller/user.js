@@ -19,7 +19,7 @@ const signin = async (req, res) => {
     const { body } = req;
     try{
         const result = await adapter.signin(body);
-        return res.status(201).json(result);
+        return res.status(200).send();
     }catch (error) { 
         return res.status(400).json({message: error.message});
     }
